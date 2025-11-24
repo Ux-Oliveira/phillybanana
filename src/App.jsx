@@ -135,7 +135,7 @@ export default function App() {
           {showAlbumModal && (
             <div className="overlay" onClick={() => setShowAlbumModal(false)}>
               <div className="album-modal" onClick={(e) => e.stopPropagation()}>
-                <h3>Check Out My Newest Cover Album!</h3>
+                <h3>Check Out My Musical Covers!</h3>
                 <div className="tracks">
                   <a href="hhttps://www.tiktok.com/@phillybanana/video/7533677722502057230" target="_blank" rel="noopener">Born To Be Wild</a>
                   <a href="https://www.tiktok.com/@phillybanana/video/7526915541441793293?lang=en3" target="_blank" rel="noopener">Disturbed</a>
