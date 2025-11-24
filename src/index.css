@@ -134,10 +134,10 @@ body{
 
 
 /*middle*/
-.center-modal{
+.center-modal {
   position: relative;
-  z-index: 60;
-  background: var(--glass);
+  z-index: 999;                
+  background: rgba(18,18,18,0.92);
   backdrop-filter: blur(8px);
   border-radius: 16px;
   padding: 60px;
@@ -146,7 +146,9 @@ body{
   align-items: center;
   max-width: 940px;
   width: 92%;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.02);
+  transform: translateZ(0);     
 }
 .pro-photo{ width: 78px; height: 78px; border-radius: 14px; object-fit: cover; }
 .modal-content h2{ margin: 0 0 8px 0; font-size: 20px; }
