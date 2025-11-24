@@ -172,12 +172,6 @@ body{
   gap: 12px;
   padding-bottom: 12px
 }
-.down-gradient{
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(246,163,147,0.04), rgba(244,211,72,0.03));
-  z-index: 0;
-}
 
 /*vinyl area*/
 .vinyl-area{
