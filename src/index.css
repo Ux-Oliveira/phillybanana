@@ -1,0 +1,332 @@
+:root{
+  --bg-gray: #111114;
+  --card-gray: #232323;
+  --pink: #F6A393;
+  --yellow: #F4D348;
+  --soft-green: #bfeecb;
+  --muted: #9a9a9a;
+  --glass: rgba(255,255,255,0.05);
+  --red: #cc3720;
+  --tree: #559942;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body{
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: linear-gradient(180deg, #0b0b0b 0%, #111 100%);
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.app-root {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/*top portion*/
+.banana-icon{
+  position: fixed;
+  left: 12px;
+  top: 12px;
+  z-index: 120;
+  border: 0;
+  background: transparent;
+  padding: 6px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+.banana-icon img{ width: 46px; height: 46px; object-fit: contain; display: block; }
+
+/*side panel*/
+.side-panel{
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  z-index: 140;
+  background: linear-gradient(180deg, var(--card-gray), #111);
+  overflow: hidden;
+  transition: width 0.35s ease, padding 0.35s ease;
+  padding: 0;
+  box-shadow: 4px 0 30px rgba(0,0,0,0.6);
+}
+.side-panel.open{ width: 84%; max-width: 320px; padding: 18px; }
+.side-inner{ padding-top: 12px; color: #fff; }
+.side-close{ position: absolute; right: 10px; top: 10px; background: none; border: 0; color: #fff; font-size: 22px; }
+.side-inner h3{ margin: 0 0 10px 0; font-size: 16px; }
+.divider{ height: 1px; background: rgba(255,255,255,0.06); margin: 12px 0; }
+.follow-list{ display: flex; flex-direction: column; gap: 12px; }
+.follow-list a{ color: #fff; text-decoration: none; display: flex; gap: 10px; align-items: center; font-weight: 600; }
+.follow-list i{ width: 22px; text-align: center; }
+.credit{ display: block; margin-top: 12px; color: #ddd; text-decoration: none; font-size: 13px; }
+
+/*pages*/
+.page{ display: flex; flex-direction: column; gap: 12px; }
+.section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  position: relative;
+  min-height: auto;
+  isolation: isolate;
+}
+
+/*up*/
+.section.up{
+  height: auto;
+  min-height: 36vh;
+  cursor: pointer;
+  padding-top: 28px;
+  padding-bottom: 12px;
+  overflow: hidden;
+}
+.bg-image{
+  position: absolute;
+  inset: 0;
+  background-position: center center;
+  background-size: cover;
+  filter: blur(6px) saturate(0.95);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.up-content{
+  position: relative;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+.banana-gif{
+  width: 44vw;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.brand{
+  margin-top: 0;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0.3px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+/*middle*/
+.center-modal{
+  position: relative;
+  z-index: 60;
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 60px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  max-width: 940px;
+  width: 92%;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+.pro-photo{ width: 78px; height: 78px; border-radius: 14px; object-fit: cover; }
+.modal-content h2{ margin: 0 0 8px 0; font-size: 20px; }
+.modal-content p{ color: var(--muted); margin: 0 0 12px 0; font-size: 15px; line-height: 1.4; }
+.arrow-row{ display: flex; align-items: center; }
+.arrow-btn{
+  border: 1px solid rgba(255,255,255,0.06);
+  background: transparent;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(.2,.8,.2,1), opacity 0.35s;
+}
+.arrow-btn.sliding{ transform: translateX(130%); opacity: 0; }
+.thin-arrow{ font-weight: 900; color: var(--pink); }
+
+/*down*/
+.down{
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 12px
+}
+.down-gradient{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(246,163,147,0.04), rgba(244,211,72,0.03));
+  z-index: 0;
+}
+
+/*vinyl area*/
+.vinyl-area{
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  width: 100%;
+}
+.vinyl-gif{
+  width: 34vw;
+  max-width: 520px;
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.pulse{ animation: pulse 1.8s infinite; }
+@keyframes pulse{ 0%{ transform: scale(1) } 50%{ transform: scale(1.06) } 100%{ transform: scale(1) } }
+
+/*assortment*/
+.assortment-area{
+  margin-top: 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 4;
+  padding: 0;
+  margin-bottom: 0;
+}
+.assortment{
+  width: 100%;
+  max-width: 1920px;
+  border-radius: 10px;
+  display: block;
+  cursor: pointer;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+/*glare animation*/
+.assortment-area::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-120%);
+  animation: glare 4s linear infinite;
+}
+@keyframes glare{ 0%{ transform: translateX(-120%) } 100%{ transform: translateX(120%) } }
+
+/*modals*/
+.overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+.album-modal{
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+  padding: 18px;
+  border-radius: 12px;
+  min-width: 260px;
+  max-width: 92%;
+  color: #fff;
+}
+.album-modal h3{ margin: 0 0 10px 0; font-size: 18px; }
+.album-modal .tracks{ display: flex; flex-direction: column; gap: 8px; }
+.album-modal .tracks a{ color: var(--yellow); text-decoration: none; font-weight: 700; }
+
+.photo-modal{
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(8px);
+  padding: 12px;
+  border-radius: 10px;
+  max-width: 94vw;
+  max-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photo-modal img{
+  width: 100%;
+  height: auto;
+  max-height: 84vh;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+
+/*for responsiveness*/
+@media (max-width: 900px){
+  .center-modal{ flex-direction: row; gap: 12px; padding: 18px; z-index: 60; }
+  .pro-photo{ width: 68px; height: 68px; }
+  .modal-content h2{ font-size: 18px; }
+  .modal-content p{ font-size: 14px; }
+  .vinyl-gif{ width: 42vw; max-width: 320px; }
+  .banana-gif{ width: 48vw; max-width: 320px; }
+}
+
+@media (max-width: 640px){
+  .center-modal{ flex-direction: column; align-items: center; text-align: center; padding: 18px; width: 94%; }
+  .pro-photo{ width: 64px; height: 64px; }
+  .modal-content h2{ font-size: 17px; }
+  .modal-content p{ font-size: 13px; }
+  .banana-gif{ width: 52vw; max-width: 280px; }
+  .brand{ font-size: 18px; }
+  .side-panel.open{ width: 86%; }
+  .vinyl-gif{ width: 48vw; max-width: 260px; }
+}
+
+/*a little polish*/
+button{ font-family: inherit; background: none; color: inherit; border: 0; }
+.center-modal{ box-shadow: 0 12px 40px rgba(0,0,0,0.6); }
+button:focus{ outline: 2px solid rgba(255,255,255,0.06); }
+
+/*there was a huge gap so i needed this*/
+html, body { height: 100%; min-height: 100%; }
+
+/*this is the color of the side modal buttons..*/
+#tiktok {
+ color: var()
+}
+#patreon {
+ color: var(--pink)
+}
+#you {
+ color: var(--red)
+}
+#insta {
+ color: var(--yellow)
+}
+#tree {
+ color: var(--tree)
+}
+#shirt {
+  color: var(--soft-green);
+}
+#plug {
+  color: var(--soft-green)
+}
